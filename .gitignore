@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# VS Code
+.vscode/
+
+# Data
+data/chroma_db/
+data/raw/
+data/processed/
+*.db
+*.sqlite
+
+# Env
+.env
+
+# OS
+.DS_Store

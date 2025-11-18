@@ -1,0 +1,164 @@
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  direction: rtl;
+}
+
+.sidebar {
+  width: 280px;
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 50px;
+}
+
+.logo h2 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.2s;
+  font-size: 16px;
+}
+
+.nav-item:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.nav-item.active {
+  background: rgba(255,255,255,0.2);
+  font-weight: bold;
+}
+
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 40px;
+  background: #f7fafc;
+}
+
+.content-header h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.content-header p {
+  color: #718096;
+  font-size: 16px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin: 40px 0;
+}
+
+.stat-card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-top: 4px solid;
+}
+
+.stat-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-info h3 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.stat-info p {
+  color: #718096;
+  font-size: 15px;
+}
+
+.recent-section {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.recent-section h2 {
+  margin-bottom: 25px;
+}
+
+.cases-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.case-item {
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.case-status {
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.case-status.جاري {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.case-status.مكتمل {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.feature-placeholder {
+  text-align: center;
+  padding: 100px;
+  color: #718096;
+}
+
+.feature-placeholder svg {
+  opacity: 0.3;
+  margin-bottom: 20px;
+}

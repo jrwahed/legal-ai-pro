@@ -165,7 +165,7 @@ function LandingPage({ onNavigateToLogin }: { onNavigateToLogin: () => void }) {
       </section>
 
       {/* Features Section */}
-      <section className="features">
+      <section className="features" id="features">
         <div className="section-header">
           <h2>المميزات الرئيسية</h2>
           <p>كل ما تحتاجه لإدارة ممارسة قانونية حديثة</p>
@@ -184,7 +184,7 @@ function LandingPage({ onNavigateToLogin }: { onNavigateToLogin: () => void }) {
       </section>
 
       {/* Benefits Section */}
-      <section className="benefits">
+      <section className="benefits" id="benefits">
         <div className="section-header">
           <h2>لماذا اختيار المستشار القانوني؟</h2>
           <p>حل شامل يوفر الوقت والمال</p>
@@ -201,7 +201,7 @@ function LandingPage({ onNavigateToLogin }: { onNavigateToLogin: () => void }) {
       </section>
 
       {/* How It Works */}
-      <section className="how-it-works">
+      <section className="how-it-works" id="how-it-works">
         <div className="section-header">
           <h2>كيف يعمل النظام؟</h2>
         </div>
@@ -211,19 +211,16 @@ function LandingPage({ onNavigateToLogin }: { onNavigateToLogin: () => void }) {
             <h3>التسجيل البسيط</h3>
             <p>أنشئ حسابك في دقائق وابدأ فوراً</p>
           </div>
-          <div className="arrow">→</div>
           <div className="step">
             <div className="step-number">2</div>
             <h3>إضافة القضايا</h3>
             <p>أضف قضاياك والعقود بسهولة</p>
           </div>
-          <div className="arrow">→</div>
           <div className="step">
             <div className="step-number">3</div>
             <h3>التحليل الذكي</h3>
             <p>الـ AI يحلل ويعطيك نصائح فورية</p>
           </div>
-          <div className="arrow">→</div>
           <div className="step">
             <div className="step-number">4</div>
             <h3>النتائج المذهلة</h3>
@@ -233,7 +230,7 @@ function LandingPage({ onNavigateToLogin }: { onNavigateToLogin: () => void }) {
       </section>
 
       {/* Testimonials */}
-      <section className="testimonials">
+      <section className="testimonials" id="testimonials">
         <div className="section-header">
           <h2>آراء المستخدمين</h2>
           <p>ماذا يقول المحامون عن الخدمة؟</p>
@@ -258,7 +255,7 @@ function LandingPage({ onNavigateToLogin }: { onNavigateToLogin: () => void }) {
       </section>
 
       {/* Pricing Section */}
-      <section className="pricing">
+      <section className="pricing" id="pricing">
         <div className="section-header">
           <h2>خطط الأسعار</h2>
           <p>اختر الخطة التي تناسب احتياجاتك</p>
@@ -289,7 +286,7 @@ function LandingPage({ onNavigateToLogin }: { onNavigateToLogin: () => void }) {
       </section>
 
       {/* FAQ Section */}
-      <section className="faq">
+      <section className="faq" id="faq">
         <div className="section-header">
           <h2>الأسئلة الشائعة</h2>
         </div>

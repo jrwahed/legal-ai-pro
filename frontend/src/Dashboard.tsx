@@ -6,7 +6,8 @@ import {
   Scale, 
   Upload,
   BarChart3,
-  Settings
+  Settings,
+  DollarSign
 } from 'lucide-react';
 import './Dashboard.css';
 import Chat from './Chat';
@@ -14,6 +15,7 @@ import CasesPage from './CasesPage';
 import ContractsPage from './ContractsPage';
 import DocumentsPage from './DocumentsPage';
 import AnalyticsPage from './AnalyticsPage';
+import FinancePage from './FinancePage';
 import EnhancedDashboard from './EnhancedDashboard';
 
 function Dashboard() {
@@ -57,6 +59,11 @@ function Dashboard() {
             <BarChart3 size={20} />
             <span>التقارير</span>
           </button>
+
+          <button className={`nav-item ${activeTab === 'finance' ? 'active' : ''}`} onClick={() => setActiveTab('finance')}>
+            <DollarSign size={20} />
+            <span>الإدارة المالية</span>
+          </button>
           
           <button className={`nav-item ${activeTab === 'settings' ? 'active' : ''}`} onClick={() => setActiveTab('settings')}>
             <Settings size={20} />
@@ -72,6 +79,7 @@ function Dashboard() {
         {activeTab === 'contracts' && <ContractsPage />}
         {activeTab === 'documents' && <DocumentsPage />}
         {activeTab === 'analytics' && <AnalyticsPage />}
+        {activeTab === 'finance' && <FinancePage />}
         
         {activeTab === 'settings' && (
           <div className="feature-placeholder">

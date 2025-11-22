@@ -1,97 +1,219 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { Send, Loader } from 'lucide-react';
+import './Chat.css';
 
 interface Message {
+  id: string;
   role: 'user' | 'assistant';
   content: string;
+  timestamp: Date;
 }
 
 function Chat() {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: '1',
+      role: 'assistant',
+      content: 'مرحباً! 👋 أنا المساعد القانوني الذكي. كيف يمكنني مساعدتك اليوم؟',
+      timestamp: new Date()
+    }
+  ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const sendMessage = async () => {
-    if (!input.trim() || loading) return;
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
-    const userMsg: Message = { role: 'user', content: input };
-    setMessages(prev => [...prev, userMsg]);
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const handleSendMessage = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+
+    // إضافة رسالة المستخدم
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      role: 'user',
+      content: input,
+      timestamp: new Date()
+    };
+
+    setMessages(prev => [...prev, userMessage]);
     setInput('');
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/api/v1/ask', {
+      // استدعاء الـ API
+      const response = await fetch('http://localhost:8000/api/chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: input, use_context: true }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          query: input,
+          messages: messages.map(m => ({
+            role: m.role,
+            content: m.content
+          }))
+        })
       });
 
-      const data = await response.json();
-      const assistantMsg: Message = { role: 'assistant', content: data.answer };
-      setMessages(prev => [...prev, assistantMsg]);
+      if (response.ok) {
+        const data = await response.json();
+        const assistantMessage: Message = {
+          id: Date.now().toString(),
+          role: 'assistant',
+          content: data.response,
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, assistantMessage]);
+      }
     } catch (error) {
-      alert('خطأ: تأكد من تشغيل Backend');
+      console.error('Error:', error);
+      const errorMessage: Message = {
+        id: Date.now().toString(),
+        role: 'assistant',
+        content: 'عذراً، حدث خطأ في الاتصال. تأكد من أن الـ Backend يعمل.',
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMessage]);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      <header style={{ padding: '20px', borderBottom: '1px solid #e2e8f0' }}>
-        <h1 style={{ fontSize: '24px', margin: 0 }}>المحادثة الذكية</h1>
-      </header>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100%',
+      background: '#ffffff',
+      borderRadius: '16px',
+      padding: '30px',
+      maxWidth: '900px',
+      margin: '0 auto'
+    }}>
+      <div style={{ marginBottom: '25px' }}>
+        <h1 style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '8px' }}>
+          المحادثة الذكية
+        </h1>
+        <p style={{ color: '#718096', fontSize: '16px' }}>
+          اسأل عن أي استفسار قانوني أو تقني
+        </p>
+      </div>
 
-      <main style={{ flex: 1, overflowY: 'auto', padding: '30px' }}>
-        {messages.length === 0 && (
-          <div style={{ textAlign: 'center', marginTop: '100px', color: '#718096' }}>
-            <div style={{ fontSize: '60px' }}>⚖️</div>
-            <h2 style={{ fontSize: '24px' }}>اسألني أي سؤال قانوني</h2>
-          </div>
-        )}
-
-        {messages.map((msg, idx) => (
-          <div key={idx} style={{ display: 'flex', justifyContent: msg.role === 'user' ? 'flex-start' : 'flex-end', marginBottom: '20px' }}>
+      {/* Messages Container */}
+      <div style={{
+        flex: 1,
+        overflowY: 'auto',
+        marginBottom: '20px',
+        paddingRight: '10px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '15px'
+      }}>
+        {messages.map(message => (
+          <div
+            key={message.id}
+            style={{
+              display: 'flex',
+              justifyContent: message.role === 'user' ? 'flex-end' : 'flex-start',
+              marginBottom: '15px'
+            }}
+          >
             <div style={{
               maxWidth: '70%',
               padding: '15px 20px',
-              borderRadius: '16px',
-              background: msg.role === 'user' ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' : 'white',
-              color: msg.role === 'user' ? 'white' : '#2d3748',
-              boxShadow: '0 2px 10px rgba(0,0,0,0.05)'
+              borderRadius: '12px',
+              background: message.role === 'user' ? '#667eea' : '#f3f4f6',
+              color: message.role === 'user' ? 'white' : '#1f2937',
+              fontSize: '15px',
+              lineHeight: '1.6',
+              whiteSpace: 'pre-wrap',
+              wordWrap: 'break-word'
             }}>
-              {msg.content}
+              {message.content}
             </div>
           </div>
         ))}
-
-        {loading && <div style={{ textAlign: 'center' }}>🤔 جاري التفكير...</div>}
-      </main>
-
-      <footer style={{ padding: '25px', background: 'white', borderTop: '1px solid #e2e8f0' }}>
-        <div style={{ display: 'flex', gap: '15px' }}>
-          <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-            placeholder="اكتب سؤالك..."
-            style={{ flex: 1, padding: '15px', border: '2px solid #e2e8f0', borderRadius: '12px', fontSize: '16px' }}
-          />
-          <button
-            onClick={sendMessage}
-            disabled={loading || !input.trim()}
-            style={{
-              padding: '15px 30px',
-              background: loading || !input.trim() ? '#cbd5e0' : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              color: 'white',
-              border: 'none',
+        {loading && (
+          <div style={{
+            display: 'flex',
+            justifyContent: 'flex-start',
+            marginBottom: '15px'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              padding: '15px 20px',
               borderRadius: '12px',
-              cursor: loading || !input.trim() ? 'not-allowed' : 'pointer'
-            }}
-          >
-            إرسال
-          </button>
-        </div>
-      </footer>
+              background: '#f3f4f6',
+              color: '#718096'
+            }}>
+              <Loader size={18} style={{ animation: 'spin 1s linear infinite' }} />
+              جاري الكتابة...
+            </div>
+          </div>
+        )}
+        <div ref={messagesEndRef} />
+      </div>
+
+      {/* Input Form */}
+      <form onSubmit={handleSendMessage} style={{
+        display: 'flex',
+        gap: '10px',
+        borderTop: '1px solid #e5e7eb',
+        paddingTop: '20px'
+      }}>
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="اكتب سؤالك هنا..."
+          disabled={loading}
+          style={{
+            flex: 1,
+            padding: '12px 16px',
+            border: '1px solid #e5e7eb',
+            borderRadius: '8px',
+            fontSize: '15px',
+            outline: 'none',
+            transition: 'border-color 0.2s'
+          }}
+        />
+        <button
+          type="submit"
+          disabled={loading}
+          style={{
+            padding: '12px 24px',
+            background: '#667eea',
+            color: 'white',
+            border: 'none',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            fontWeight: '600',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            opacity: loading ? 0.6 : 1
+          }}
+        >
+          <Send size={18} />
+          إرسال
+        </button>
+      </form>
+
+      <style>{`
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </div>
   );
 }

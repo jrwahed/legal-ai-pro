@@ -4,11 +4,16 @@
   box-sizing: border-box;
 }
 
+body, html {
+  width: 100%;
+}
+
 .landing-page {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   background: #ffffff;
   color: #1f2937;
   line-height: 1.6;
+  width: 100%;
 }
 
 /* ==================== NAVBAR ==================== */
@@ -20,6 +25,7 @@
   z-index: 100;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(10px);
+  width: 100%;
 }
 
 .navbar-container {
@@ -77,6 +83,11 @@
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
+  width: 100%;
+}
+
+.hero-content {
+  width: 100%;
 }
 
 .hero-title {
@@ -168,6 +179,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .floating-card {
@@ -233,14 +245,14 @@
 
 /* ==================== FEATURES ==================== */
 .features {
-  max-width: 1400px;
-  margin: 0 auto;
   padding: 100px 30px;
   background: #f9fafb;
-  border-radius: 20px;
+  width: 100%;
 }
 
 .features-grid {
+  max-width: 1400px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
@@ -282,12 +294,14 @@
 
 /* ==================== BENEFITS ==================== */
 .benefits {
-  max-width: 1400px;
-  margin: 0 auto;
   padding: 100px 30px;
+  background: #ffffff;
+  width: 100%;
 }
 
 .benefits-grid {
+  max-width: 1400px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
@@ -330,14 +344,14 @@
 
 /* ==================== HOW IT WORKS ==================== */
 .how-it-works {
-  max-width: 1400px;
-  margin: 0 auto;
   padding: 100px 30px;
   background: #f9fafb;
-  border-radius: 20px;
+  width: 100%;
 }
 
 .steps-container {
+  max-width: 1400px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
@@ -384,12 +398,14 @@
 
 /* ==================== TESTIMONIALS ==================== */
 .testimonials {
-  max-width: 1400px;
-  margin: 0 auto;
   padding: 100px 30px;
+  background: #ffffff;
+  width: 100%;
 }
 
 .testimonials-grid {
+  max-width: 1400px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
@@ -438,14 +454,14 @@
 
 /* ==================== PRICING ==================== */
 .pricing {
-  max-width: 1400px;
-  margin: 0 auto;
   padding: 100px 30px;
   background: #f9fafb;
-  border-radius: 20px;
+  width: 100%;
 }
 
 .pricing-grid {
+  max-width: 1400px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
@@ -559,12 +575,14 @@
 
 /* ==================== FAQ ==================== */
 .faq {
-  max-width: 1000px;
-  margin: 0 auto;
   padding: 100px 30px;
+  background: #ffffff;
+  width: 100%;
 }
 
 .faq-container {
+  max-width: 1000px;
+  margin: 0 auto;
   display: grid;
   gap: 20px;
 }
@@ -596,10 +614,10 @@
 
 /* ==================== FINAL CTA ==================== */
 .final-cta {
-  max-width: 1000px;
-  margin: 0 auto;
   padding: 80px 30px;
   text-align: center;
+  background: #ffffff;
+  width: 100%;
 }
 
 .final-cta h2 {
@@ -614,6 +632,9 @@
   color: #6b7280;
   margin-bottom: 30px;
   line-height: 1.6;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cta-btn-large {
@@ -648,6 +669,7 @@
   background: #1f2937;
   color: white;
   padding: 60px 30px 30px;
+  width: 100%;
 }
 
 .footer-content {
@@ -757,7 +779,8 @@
   .how-it-works,
   .testimonials,
   .pricing,
-  .faq {
+  .faq,
+  .final-cta {
     padding: 60px 20px;
   }
 

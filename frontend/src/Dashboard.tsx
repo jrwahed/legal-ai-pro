@@ -16,6 +16,7 @@ import ContractsPage from './ContractsPage';
 import DocumentsPage from './DocumentsPage';
 import AnalyticsPage from './AnalyticsPage';
 import FinancePage from './FinancePage';
+import SettingsPage from './SettingsPage';
 import EnhancedDashboard from './EnhancedDashboard';
 
 function Dashboard() {
@@ -80,14 +81,7 @@ function Dashboard() {
         {activeTab === 'documents' && <DocumentsPage />}
         {activeTab === 'analytics' && <AnalyticsPage />}
         {activeTab === 'finance' && <FinancePage />}
-        
-        {activeTab === 'settings' && (
-          <div className="feature-placeholder">
-            <Settings size={64} />
-            <h2>الإعدادات</h2>
-            <p>قريباً - إعدادات النظام</p>
-          </div>
-        )}
+        {activeTab === 'settings' && <SettingsPage />}
       </main>
     </div>
   );

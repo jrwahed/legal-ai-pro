@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { 
-  Scale, MessageSquare, FileText, BarChart3, DollarSign, Settings, 
-  ArrowRight, Check, Zap, Shield, Clock, Users, TrendingUp, Award,
   Menu, X
 } from 'lucide-react';
 import './LandingPage.css';
@@ -35,7 +33,6 @@ function LandingPage({ onNavigateToLogin }: { onNavigateToLogin: () => void }) {
       color: '#4facfe'
     },
     {
-      icon: <DollarSign size={40} />,
       title: 'الإدارة المالية المتكاملة',
       description: 'تتبع الإيرادات والمصروفات مع فواتير تلقائية وتقارير ضريبية',
       color: '#43e97b'

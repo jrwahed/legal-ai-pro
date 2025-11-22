@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { DollarSign, TrendingUp, TrendingDown, Eye, Edit2, Trash2, Plus } from 'lucide-react';
 import './FinancePage.css';
 
 interface Transaction {
@@ -171,7 +170,6 @@ function FinancePage() {
               justifyContent: 'center',
               color: profit >= 0 ? '#3b82f6' : '#f59e0b'
             }}>
-              <DollarSign size={28} />
             </div>
           </div>
         </div>
@@ -288,7 +286,6 @@ function FinancePage() {
               </thead>
               <tbody>
                 {transactions.map((transaction) => (
-                  <tr key={transaction.id} style={{ borderBottom: '1px solid #e5e7eb', hover: '#f9fafb' }}>
                     <td style={{ padding: '12px', fontSize: '14px' }}>{transaction.date}</td>
                     <td style={{ padding: '12px', fontSize: '14px' }}>
                       <span style={{

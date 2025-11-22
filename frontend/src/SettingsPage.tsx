@@ -10,18 +10,15 @@ import {
   Download,
   LogOut,
   Save,
-  ChevronRight,
   Moon,
   Sun
 } from 'lucide-react';
 
-interface SettingsSection {
   id: string;
   label: string;
   icon: React.ReactNode;
 }
 
-function SettingsPage() {
   const [activeSection, setActiveSection] = useState('account');
   const [darkMode, setDarkMode] = useState(false);
   const [notifications, setNotifications] = useState({
@@ -35,7 +32,6 @@ function SettingsPage() {
   const [autoBackup, setAutoBackup] = useState(true);
   const [backupFrequency, setBackupFrequency] = useState('weekly');
 
-  const sections: SettingsSection[] = [
     { id: 'account', label: 'حسابي', icon: <User size={20} /> },
     { id: 'notifications', label: 'الإشعارات', icon: <Bell size={20} /> },
     { id: 'security', label: 'الأمان والخصوصية', icon: <Shield size={20} /> },
@@ -92,7 +88,6 @@ function SettingsPage() {
 
       {/* Main Content */}
       <main style={{ flex: 1, padding: '40px' }}>
-        {/* Account Settings */}
         {activeSection === 'account' && (
           <div>
             <h1 style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '8px' }}>حسابي</h1>
@@ -504,4 +499,3 @@ function SettingsPage() {
   );
 }
 
-export default SettingsPage;

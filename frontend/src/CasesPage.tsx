@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Plus, Search, Filter, MoreVertical, Calendar, User } from 'lucide-react';
 
 interface Case {
   id: number;
@@ -13,7 +12,6 @@ interface Case {
 }
 
 function CasesPage() {
-  const [showNewCase, setShowNewCase] = useState(false);
   const [cases] = useState<Case[]>([
     {
       id: 1,
@@ -189,7 +187,6 @@ function CasesPage() {
               <div style={{ textAlign: 'left' }}>
                 <div style={{ fontSize: '12px', color: '#718096', marginBottom: '5px' }}>الجلسة القادمة</div>
                 <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#667eea', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                  <Calendar size={16} />
                   {c.nextHearing}
                 </div>
               </div>

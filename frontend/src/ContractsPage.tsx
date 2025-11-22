@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Plus, Search, Download, Eye, Edit, FileText, Clock, CheckCircle, AlertCircle } from 'lucide-react';
 
 interface Contract {
   id: number;
@@ -14,7 +13,6 @@ interface Contract {
 }
 
 function ContractsPage() {
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [contracts] = useState<Contract[]>([
     {
       id: 1,
@@ -281,7 +279,6 @@ function ContractsPage() {
                 fontSize: '14px',
                 fontWeight: 'bold'
               }}>
-                <Eye size={16} />
                 عرض
               </button>
               <button style={{

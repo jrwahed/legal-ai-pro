@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react';
-import { Upload, FileText, Image, File, CheckCircle, Clock, Trash2, Eye, Download } from 'lucide-react';
 
 interface Document {
   id: number;
@@ -339,7 +338,6 @@ function DocumentsPage() {
                 fontSize: '13px',
                 fontWeight: 'bold'
               }}>
-                <Eye size={16} />
                 عرض
               </button>
               <button style={{

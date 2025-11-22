@@ -1,4 +1,3 @@
-import { TrendingUp, Scale, FileText, MessageSquare, Upload, Clock, DollarSign } from 'lucide-react';
 
 function EnhancedDashboard() {
   const stats = [

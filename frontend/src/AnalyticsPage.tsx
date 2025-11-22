@@ -1,4 +1,3 @@
-import { TrendingUp, TrendingDown, DollarSign, Scale, FileText, Users, Calendar, Award } from 'lucide-react';
 
 function AnalyticsPage() {
   // بيانات الإحصائيات
@@ -16,7 +15,6 @@ function AnalyticsPage() {
       value: '89%', 
       change: '+5%', 
       trend: 'up',
-      icon: <Award size={24} />,
       color: '#10b981'
     },
     { 
@@ -32,7 +30,6 @@ function AnalyticsPage() {
       value: '2.4M', 
       change: '+18%', 
       trend: 'up',
-      icon: <DollarSign size={24} />,
       color: '#f59e0b'
     }
   ];
